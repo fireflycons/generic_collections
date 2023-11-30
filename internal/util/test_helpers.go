@@ -11,9 +11,9 @@ Functions for generating test data
 */
 
 func CreateRandInt(seed *int64) int {
-	rand.Seed(*seed)
+	r := rand.New(rand.NewSource(*seed))
 	*seed++
-	return rand.Int()
+	return r.Int()
 }
 
 func CreateIntListData(arraySize int, seed *int64) (headItems, tailItems, headItemsReverse, tailItemsReverse []int) {

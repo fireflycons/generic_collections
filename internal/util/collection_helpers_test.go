@@ -206,9 +206,9 @@ func TestLastIndexOfConcurrent(t *testing.T) {
 	arr := make([]int, arrSize)
 
 	// Smatter some values in
-	rand.Seed(10007)
+	r := rand.New(rand.NewSource(10007))
 	for i := 0; i < 25; i++ {
-		arr[rand.Intn(arrSize)] = value
+		arr[r.Intn(arrSize)] = value
 	}
 
 	// And make the last one the one we want

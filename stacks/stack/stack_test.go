@@ -22,8 +22,8 @@ func generateIntStack(count int) *Stack[int] {
 	seed := int64(count * 34)
 
 	for i := 0; i < count; i++ {
-		rand.Seed(seed)
-		stack.Push(rand.Int())
+		r := rand.New(rand.NewSource(seed))
+		stack.Push(r.Int())
 		seed++
 	}
 

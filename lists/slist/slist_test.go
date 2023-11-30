@@ -235,8 +235,8 @@ func verifyLLState[T any](t *testing.T, linkedList *SList[T], expectedItems []T)
 		verifySListNodeA(t, linkedList.First(), expectedItems[0], linkedList, nil)
 		verifySListNodeA(t, linkedList.Last(), expectedItems[0], linkedList, nil)
 	} else {
-		verifySListNodeB(t, linkedList.First(), expectedItems[0], linkedList, true, false)
-		verifySListNodeB(t, linkedList.Last(), expectedItems[expectedItemsLength-1], linkedList, false, true)
+		verifySListNodeB(t, linkedList.First(), expectedItems[0], linkedList, false)
+		verifySListNodeB(t, linkedList.Last(), expectedItems[expectedItemsLength-1], linkedList, true)
 	}
 
 	// Moving forward through the collection starting at head
@@ -364,7 +364,7 @@ func verifySListNodeA[T any](t *testing.T, node *SListNode[T], expectedValue T, 
 	require.Equal(t, expectedNext, node.Next())
 }
 
-func verifySListNodeB[T any](t *testing.T, node *SListNode[T], expectedValue T, expectedList *SList[T], expectedPreviousNil, expectedNextNil bool) {
+func verifySListNodeB[T any](t *testing.T, node *SListNode[T], expectedValue T, expectedList *SList[T], expectedNextNil bool) {
 
 	require.Equal(t, expectedValue, node.Value())
 	require.Equal(t, expectedList, node.List())

@@ -79,7 +79,8 @@ func TestClear(t *testing.T) {
 			}),
 			WithHasher(func(s1 strct) uintptr { return uintptr(42) }))
 
-		set.Add(strct{})
+		i := 1
+		set.Add(strct{ptr: &i})
 		set.Clear()
 		require.ElementsMatch(t, set.ToSlice(), []strct{})
 	})

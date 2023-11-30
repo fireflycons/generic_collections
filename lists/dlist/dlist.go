@@ -26,14 +26,13 @@ type DListOptionFunc[T any] func(*DList[T])
 
 // DList represents a doubly linked list of elements of type T.
 type DList[T any] struct {
-	version    int
-	lock       *sync.RWMutex
-	head       *DListNode[T]
-	tail       *DListNode[T]
-	count      int
-	compare    functions.ComparerFunc[T]
-	copy       functions.DeepCopyFunc[T]
-	concurrent bool
+	version int
+	lock    *sync.RWMutex
+	head    *DListNode[T]
+	tail    *DListNode[T]
+	count   int
+	compare functions.ComparerFunc[T]
+	copy    functions.DeepCopyFunc[T]
 	local.InternalImpl
 }
 

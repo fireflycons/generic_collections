@@ -112,7 +112,8 @@ func TestClear(t *testing.T) {
 			return 0
 		}))
 
-		queue.Enqueue(strct{})
+		i := 1
+		queue.Enqueue(strct{ptr: &i})
 		queue.Clear()
 		verifyQueueState(t, queue, []strct{})
 

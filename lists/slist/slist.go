@@ -24,14 +24,13 @@ var _ lists.List[int] = (*SList[int])(nil)
 type SListOptionFunc[T any] func(*SList[T])
 
 type SList[T any] struct {
-	version    int
-	lock       *sync.RWMutex
-	head       *SListNode[T]
-	tail       *SListNode[T]
-	count      int
-	compare    functions.ComparerFunc[T]
-	copy       functions.DeepCopyFunc[T]
-	concurrent bool
+	version int
+	lock    *sync.RWMutex
+	head    *SListNode[T]
+	tail    *SListNode[T]
+	count   int
+	compare functions.ComparerFunc[T]
+	copy    functions.DeepCopyFunc[T]
 	local.InternalImpl
 }
 
@@ -575,12 +574,6 @@ func (l *SList[T]) removeNode(node *SListNode[T]) {
 
 	l.count--
 	l.version++
-}
-
-func assertNotNilNode[T any](n *SListNode[T], msg string) {
-	if n == nil {
-		panic(msg)
-	}
 }
 
 func (l *SList[T]) addItemLast(value T) *SListNode[T] {

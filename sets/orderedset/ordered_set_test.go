@@ -61,7 +61,8 @@ func TestClear(t *testing.T) {
 				return 0
 			}))
 
-		set.Add(strct{})
+		i := 1
+		set.Add(strct{ptr: &i})
 		set.Clear()
 		require.ElementsMatch(t, set.ToSlice(), []strct{})
 	})

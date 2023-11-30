@@ -32,7 +32,7 @@ func newForwardIterator[T any](list *SList[T], predicate functions.PredicateFunc
 	}
 }
 
-// Iterator retuns an iterator that walks the list from first to last element
+// Iterator returns an iterator that walks the list from first to last element
 //
 //	iter := ll.Iterator()
 //

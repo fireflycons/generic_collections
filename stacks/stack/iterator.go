@@ -51,7 +51,7 @@ func newReverseIterator[T any](stack *Stack[T]) collections.Iterator[T] {
 	}
 }
 
-// Iterator retuns an iterator that walks the stack from first to last element
+// Iterator returns an iterator that walks the stack from first to last element
 //
 //	iter := stack.Iterator()
 //
@@ -63,7 +63,7 @@ func (s *Stack[T]) Iterator() collections.Iterator[T] {
 	return newForwardIterator(s, util.DefaultPredicate[T])
 }
 
-// ReverseIterator retuns an iterator that walks the stack from last to first element
+// ReverseIterator returns an iterator that walks the stack from last to first element
 //
 //	iter := stack.ReverseIterator()
 //

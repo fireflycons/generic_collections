@@ -1,5 +1,7 @@
 # Generic Collections
 
+![build](https://img.shields.io/github/actions/workflow/status/fireflycons/generic_collections/go.yml)
+
 Package generic_collections provides generic versions of common collection types. You will find each collection in its own sub-package. The code is based on ideas from other go packages and .NET generic collections.
 
 Collections are optionally thread-safe (see [Thread Safety](#thread-safety)), and optionally use concurrency in some methods (see [Concurrency](#concurrency)).

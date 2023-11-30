@@ -56,7 +56,7 @@ func newReverseIterator[T any](q *Queue[T]) collections.Iterator[T] {
 	}
 }
 
-// Iterator retuns an iterator that walks the Queue from head to tail element
+// Iterator returns an iterator that walks the Queue from head to tail element
 //
 //	iter := q.Iterator()
 //
@@ -68,7 +68,7 @@ func (q *Queue[T]) Iterator() collections.Iterator[T] {
 	return newForwardIterator(q, util.DefaultPredicate[T])
 }
 
-// ReverseIterator retuns an iterator that walks the Queue from tail to head element
+// ReverseIterator returns an iterator that walks the Queue from tail to head element
 //
 //	iter := q.ReverseIterator()
 //

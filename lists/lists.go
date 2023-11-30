@@ -25,7 +25,7 @@ type List[T any] interface {
 	// AddItemLast adds the given value at the end of the list.
 	AddItemLast(value T)
 
-	// RemoveItem searches the list for the first occurence of value
+	// RemoveItem searches the list for the first occurrence of value
 	// and removes the node containing that value. Up to O(n).
 	//
 	// Returns true if a node was removed; else false.

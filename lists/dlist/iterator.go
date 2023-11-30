@@ -58,7 +58,7 @@ func newReverseIterator[T any](list *DList[T]) collections.Iterator[T] {
 	}
 }
 
-// Iterator retuns an iterator that walks the DList from first to last element
+// Iterator returns an iterator that walks the DList from first to last element
 //
 //	iter := ll.Iterator()
 //
@@ -70,7 +70,7 @@ func (l *DList[T]) Iterator() collections.Iterator[T] {
 	return newForwardIterator(l, util.DefaultPredicate[T])
 }
 
-// ReverseIterator retuns an iterator that walks the DList from last to first element
+// ReverseIterator returns an iterator that walks the DList from last to first element
 //
 //	iter := ll.ReverseIterator()
 //

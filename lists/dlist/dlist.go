@@ -172,7 +172,7 @@ func (l *DList[T]) First() *DListNode[T] {
 	return l.head
 }
 
-// Last retuns the node at the end of the list.
+// Last returns the node at the end of the list.
 // Will be nil if the list is empty.
 func (l *DList[T]) Last() *DListNode[T] {
 
@@ -380,7 +380,7 @@ func (l *DList[T]) Remove(value T) bool {
 	return l.RemoveItem(value)
 }
 
-// RemoveItem searches the list for the first occurence of value
+// RemoveItem searches the list for the first occurrence of value
 // and removes the node containing that value. Up to O(n).
 //
 // Returns true if a node was removed; else false.
@@ -651,7 +651,7 @@ func (ll *DList[T]) removeNode(node *DListNode[T]) {
 	ll.version++
 }
 
-// Mkae a new empty list with the same attributes as this
+// Make a new empty list with the same attributes as this
 func (ll *DList[T]) makeCopy() *DList[T] {
 	ll1 := &DList[T]{
 		copy:    ll.copy,

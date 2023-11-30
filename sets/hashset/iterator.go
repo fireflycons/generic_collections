@@ -43,7 +43,7 @@ func newForwardIterator[T any](s *HashSet[T], predicate functions.PredicateFunc[
 	}
 }
 
-// Iterator retuns a forward iterator that walks the set from first to last element
+// Iterator returns a forward iterator that walks the set from first to last element
 //
 //	iter := set.Iterator()
 //

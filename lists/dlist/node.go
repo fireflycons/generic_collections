@@ -34,7 +34,7 @@ func (n *DListNode[T]) Next() *DListNode[T] {
 	return n.next
 }
 
-// Previous retuns the previous node in the list
+// Previous returns the previous node in the list
 // Will be nil if this is the first node.
 func (n *DListNode[T]) Previous() *DListNode[T] {
 	if n.prev == nil {

@@ -82,7 +82,7 @@ func TestEnumerable(t *testing.T) {
 		require.Equal(t, expected, q.ToSlice())
 	})
 
-	t.Run("Map applies func to all elements and retuns new collection", func(t *testing.T) {
+	t.Run("Map applies func to all elements and returns new collection", func(t *testing.T) {
 		q = New[int]()
 		expected := make([]int, len(evens))
 

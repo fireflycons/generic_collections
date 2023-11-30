@@ -41,7 +41,7 @@ type Stack[T any] struct {
 	local.InternalImpl
 }
 
-// New creates a new stack with intial capacity for 16 elements
+// New creates a new stack with initial capacity for 16 elements
 func New[T any](options ...StackOptionFunc[T]) *Stack[T] {
 	stack := &Stack[T]{
 		initialCapacity: util.DefaultCapacity,

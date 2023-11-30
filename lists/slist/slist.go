@@ -170,7 +170,7 @@ func (l *SList[T]) First() *SListNode[T] {
 	return l.head
 }
 
-// Last retuns the node at the end of the list.
+// Last returns the node at the end of the list.
 // Will be nil if the list is empty.
 func (l *SList[T]) Last() *SListNode[T] {
 
@@ -311,7 +311,7 @@ func (l *SList[T]) Remove(value T) bool {
 	return l.RemoveItem(value)
 }
 
-// RemoveItem searches the list for the first occurence of value
+// RemoveItem searches the list for the first occurrence of value
 // and removes the node containing that value. Up to O(n).
 //
 // Returns true if a node was removed; else false.
@@ -595,7 +595,7 @@ func (l *SList[T]) addItemLast(value T) *SListNode[T] {
 	return newNode
 }
 
-// Mkae a new empty list with the same attributes as this
+// Make a new empty list with the same attributes as this
 func (l *SList[T]) makeCopy() *SList[T] {
 	ll1 := &SList[T]{
 		copy:    l.copy,

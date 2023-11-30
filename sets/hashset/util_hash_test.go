@@ -4,6 +4,7 @@ package hashset
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/require"
 )
@@ -100,4 +101,12 @@ func TestHashingPointerToStruct(t *testing.T) {
 	m := New[*someStruct]()
 	require.Equal(t, m.hasher(aPtr), m.hasher(a2Ptr))
 	require.NotEqual(t, m.hasher(aPtr), m.hasher(bPtr))
+}
+
+func TestHashingTime(t *testing.T) {
+	tm := time.Date(2001, 1, 1, 0, 0, 0, 0, time.UTC)
+	expected := uintptr(0xd23a9f60509fb108)
+	m := New[time.Time]()
+	hash := m.hasher(tm)
+	require.Equal(t, expected, hash)
 }

@@ -100,15 +100,7 @@ var HashTime = hashTime
 
 var hashTime = func(key time.Time) uintptr {
 
-	s := int(unsafe.Sizeof(key))
-	bh := reflect.SliceHeader{
-		Data: uintptr(unsafe.Pointer(&key)),
-		Len:  s,
-		Cap:  s, // cap needs to be set, otherwise xxhash fails on ARM Macs
-	}
-
-	b := *(*[]byte)(unsafe.Pointer(&bh))
-	return hashFnv(b)
+	return hashFnv(unsafe.Slice((*byte)(unsafe.Pointer(&key)), int(unsafe.Sizeof(key))))
 }
 
 // Specialized hash functions, optimized for the bit size of the key where available.
@@ -251,17 +243,11 @@ var hashQword = func(key uint64) uintptr {
 var HashString = hashString
 
 var hashString = func(key string) uintptr {
-	sh := (*reflect.StringHeader)(unsafe.Pointer(&key))
-	bh := reflect.SliceHeader{
-		Data: sh.Data,
-		Len:  sh.Len,
-		Cap:  sh.Len, // cap needs to be set, otherwise xxhash fails on ARM Macs
-	}
-
-	b := *(*[]byte)(unsafe.Pointer(&bh))
+	slen := len(key)
+	b := unsafe.Slice(unsafe.StringData(key), slen)
 	var h uint64
 
-	if sh.Len >= 32 {
+	if slen >= 32 {
 		v1 := prime1v + prime2
 		v2 := prime2
 		v3 := uint64(0)
@@ -282,7 +268,7 @@ var hashString = func(key string) uintptr {
 		h = prime5
 	}
 
-	h += uint64(sh.Len)
+	h += uint64(slen)
 
 	i, end := 0, len(b)
 	for ; i+8 <= end; i += 8 {

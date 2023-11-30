@@ -645,11 +645,11 @@ func TestQueueAddRange(t *testing.T) {
 			queue.Enqueue(queueItems[i])
 		}
 
-		tempItems = make([]int, 0, moveElems)
+		tempItems = make([]int, moveElems)
 
 		for i := 0; i < moveElems; i++ {
 			v := queue.Dequeue()
-			tempItems = append(tempItems, v)
+			tempItems[i] = v
 			queue.Enqueue(v)
 		}
 

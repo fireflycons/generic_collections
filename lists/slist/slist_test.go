@@ -220,7 +220,7 @@ func defaultT[T any]() T {
 // Verify the state (integrity) of the list being tested.
 func verifyLLState[T any](t *testing.T, linkedList *SList[T], expectedItems []T) {
 
-	var currentNode, nextNode *SListNode[T] = nil, nil
+	var currentNode, nextNode *SListNode[T]
 
 	expectedItemsLength := len(expectedItems)
 

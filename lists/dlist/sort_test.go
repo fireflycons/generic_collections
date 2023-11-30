@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/fireflycons/generic_collections/internal/util"
+	"github.com/stretchr/testify/require"
 )
 
 func TestSort(t *testing.T) {
@@ -48,7 +49,8 @@ func TestSorted(t *testing.T) {
 
 	t.Run("Empty list", func(t *testing.T) {
 		linkedList = New[int]()
-		ll1 := linkedList.Sorted().(*DList[int])
+		ll1, ok := linkedList.Sorted().(*DList[int])
+		require.True(t, ok, "type assertion failed")
 		verifyLLState(t, ll1, []int{})
 	})
 
@@ -57,7 +59,8 @@ func TestSorted(t *testing.T) {
 			headItems, _, _, _ = util.CreateIntListData(arraySize, &seed)
 			linkedList = New[int]()
 			linkedList.AddRange(headItems)
-			ll1 := linkedList.Sorted().(*DList[int])
+			ll1, ok := linkedList.Sorted().(*DList[int])
+			require.True(t, ok, "type assertion failed")
 			tempItems = make([]int, len(headItems), len(headItems)+1)
 			copy(tempItems, headItems)
 			sort.Ints(tempItems)
@@ -113,7 +116,8 @@ func TestSortedDescending(t *testing.T) {
 
 	t.Run("Empty list", func(t *testing.T) {
 		linkedList = New[int]()
-		ll1 := linkedList.SortedDescending().(*DList[int])
+		ll1, ok := linkedList.SortedDescending().(*DList[int])
+		require.True(t, ok, "type assertion failed")
 		verifyLLState(t, ll1, []int{})
 	})
 
@@ -122,7 +126,8 @@ func TestSortedDescending(t *testing.T) {
 			headItems, _, _, _ = util.CreateIntListData(arraySize, &seed)
 			linkedList = New[int]()
 			linkedList.AddRange(headItems)
-			ll1 := linkedList.SortedDescending().(*DList[int])
+			ll1, ok := linkedList.SortedDescending().(*DList[int])
+			require.True(t, ok, "type assertion failed")
 			tempItems = make([]int, len(headItems), len(headItems)+1)
 			copy(tempItems, headItems)
 			sort.Ints(tempItems)

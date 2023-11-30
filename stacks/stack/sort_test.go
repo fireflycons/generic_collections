@@ -53,14 +53,16 @@ func TestSorted(t *testing.T) {
 
 	t.Run("Empty stack", func(t *testing.T) {
 		stack := New[int]()
-		s1 := stack.Sorted().(*Stack[int])
+		s1, ok := stack.Sorted().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		verifyStackState(t, s1, []int{})
 	})
 
 	t.Run("Full stack", func(t *testing.T) {
 		stack := New[int]()
 		stack.AddRange(stackItems)
-		s1 := stack.Sorted().(*Stack[int])
+		s1, ok := stack.Sorted().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(stackItems))
 		copy(tempItems, stackItems)
 		sort.Ints(tempItems)
@@ -71,7 +73,8 @@ func TestSorted(t *testing.T) {
 	t.Run("Stack with space at end", func(t *testing.T) {
 		stack := New(WithCapacity[int](32))
 		stack.AddRange(stackItems)
-		s1 := stack.Sorted().(*Stack[int])
+		s1, ok := stack.Sorted().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(stackItems))
 		copy(tempItems, stackItems)
 		sort.Ints(tempItems)
@@ -127,14 +130,16 @@ func TestSortedDescending(t *testing.T) {
 
 	t.Run("Empty stack", func(t *testing.T) {
 		stack := New[int]()
-		s1 := stack.SortedDescending().(*Stack[int])
+		s1, ok := stack.SortedDescending().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		verifyStackState(t, s1, []int{})
 	})
 
 	t.Run("Full stack", func(t *testing.T) {
 		stack := New[int]()
 		stack.AddRange(stackItems)
-		s1 := stack.SortedDescending().(*Stack[int])
+		s1, ok := stack.SortedDescending().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(stackItems))
 		copy(tempItems, stackItems)
 		sort.Ints(tempItems)
@@ -146,7 +151,8 @@ func TestSortedDescending(t *testing.T) {
 	t.Run("Stack with space at end", func(t *testing.T) {
 		stack := New(WithCapacity[int](32))
 		stack.AddRange(stackItems)
-		s1 := stack.SortedDescending().(*Stack[int])
+		s1, ok := stack.SortedDescending().(*Stack[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(stackItems))
 		copy(tempItems, stackItems)
 		sort.Ints(tempItems)

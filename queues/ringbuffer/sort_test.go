@@ -57,14 +57,16 @@ func TestSorted(t *testing.T) {
 
 	t.Run("Empty buffer", func(t *testing.T) {
 		ringBuffer = New[int](arraySize)
-		buf1 := ringBuffer.Sorted().(*RingBuffer[int])
+		buf1, ok := ringBuffer.Sorted().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		verifyBufferState(t, buf1, []int{})
 	})
 
 	t.Run("Full buffer", func(t *testing.T) {
 		ringBuffer = New[int](arraySize)
 		ringBuffer.AddRange(bufferItems)
-		buf1 := ringBuffer.Sorted().(*RingBuffer[int])
+		buf1, ok := ringBuffer.Sorted().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(bufferItems))
 		copy(tempItems, bufferItems)
 		sort.Ints(tempItems)
@@ -76,7 +78,8 @@ func TestSorted(t *testing.T) {
 	t.Run("Buffer with space at end", func(t *testing.T) {
 		ringBuffer = New[int](arraySize * 2)
 		ringBuffer.AddRange(bufferItems)
-		buf1 := ringBuffer.Sorted().(*RingBuffer[int])
+		buf1, ok := ringBuffer.Sorted().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(bufferItems))
 		copy(tempItems, bufferItems)
 		sort.Ints(tempItems)
@@ -137,14 +140,16 @@ func TestSortedDescending(t *testing.T) {
 
 	t.Run("Empty buffer", func(t *testing.T) {
 		ringBuffer = New[int](arraySize)
-		buf1 := ringBuffer.SortedDescending().(*RingBuffer[int])
+		buf1, ok := ringBuffer.SortedDescending().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		verifyBufferState(t, buf1, []int{})
 	})
 
 	t.Run("Full buffer", func(t *testing.T) {
 		ringBuffer = New[int](arraySize)
 		ringBuffer.AddRange(bufferItems)
-		buf1 := ringBuffer.SortedDescending().(*RingBuffer[int])
+		buf1, ok := ringBuffer.SortedDescending().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(bufferItems))
 		copy(tempItems, bufferItems)
 		sort.Ints(tempItems)
@@ -157,7 +162,8 @@ func TestSortedDescending(t *testing.T) {
 	t.Run("Buffer with space at end", func(t *testing.T) {
 		ringBuffer = New[int](arraySize * 2)
 		ringBuffer.AddRange(bufferItems)
-		buf1 := ringBuffer.SortedDescending().(*RingBuffer[int])
+		buf1, ok := ringBuffer.SortedDescending().(*RingBuffer[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(bufferItems))
 		copy(tempItems, bufferItems)
 		sort.Ints(tempItems)

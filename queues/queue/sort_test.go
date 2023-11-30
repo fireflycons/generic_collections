@@ -66,14 +66,16 @@ func TestSorted(t *testing.T) {
 
 	t.Run("Empty queue", func(t *testing.T) {
 		queue = New[int]()
-		q1 := queue.Sorted().(*Queue[int])
+		q1, ok := queue.Sorted().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		verifyQueueState(t, q1, []int{})
 	})
 
 	t.Run("Full queue", func(t *testing.T) {
 		queue = New[int]()
 		queue.AddRange(queueItems)
-		q1 := queue.Sorted().(*Queue[int])
+		q1, ok := queue.Sorted().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(queueItems))
 		copy(tempItems, queueItems)
 		sort.Ints(tempItems)
@@ -84,7 +86,8 @@ func TestSorted(t *testing.T) {
 	t.Run("Queue with space at end", func(t *testing.T) {
 		queue = New(WithCapacity[int](32))
 		queue.AddRange(queueItems)
-		q1 := queue.Sorted().(*Queue[int])
+		q1, ok := queue.Sorted().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(queueItems))
 		copy(tempItems, queueItems)
 		sort.Ints(tempItems)
@@ -95,7 +98,8 @@ func TestSorted(t *testing.T) {
 	t.Run("Queue with gap in - some elements removed", func(t *testing.T) {
 		tempItems := createGappedQueue(&queue, queueItems)
 		verifyQueueState(t, queue, tempItems)
-		q1 := queue.Sorted().(*Queue[int])
+		q1, ok := queue.Sorted().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		expectedItems := make([]int, len(tempItems))
 		copy(expectedItems, tempItems)
 		sort.Ints(expectedItems)
@@ -165,14 +169,16 @@ func TestSortedDescending(t *testing.T) {
 
 	t.Run("Empty queue", func(t *testing.T) {
 		queue = New[int]()
-		q1 := queue.SortedDescending().(*Queue[int])
+		q1, ok := queue.SortedDescending().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		verifyQueueState(t, q1, []int{})
 	})
 
 	t.Run("Full queue", func(t *testing.T) {
 		queue = New[int]()
 		queue.AddRange(queueItems)
-		q1 := queue.SortedDescending().(*Queue[int])
+		q1, ok := queue.SortedDescending().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(queueItems))
 		copy(tempItems, queueItems)
 		sort.Ints(tempItems)
@@ -184,7 +190,8 @@ func TestSortedDescending(t *testing.T) {
 	t.Run("Queue with space at end", func(t *testing.T) {
 		queue = New(WithCapacity[int](32))
 		queue.AddRange(queueItems)
-		q1 := queue.SortedDescending().(*Queue[int])
+		q1, ok := queue.SortedDescending().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		tempItems = make([]int, len(queueItems))
 		copy(tempItems, queueItems)
 		sort.Ints(tempItems)
@@ -196,7 +203,8 @@ func TestSortedDescending(t *testing.T) {
 	t.Run("Queue with gap in - some elements removed", func(t *testing.T) {
 		tempItems := createGappedQueue(&queue, queueItems)
 		verifyQueueState(t, queue, tempItems)
-		q1 := queue.SortedDescending().(*Queue[int])
+		q1, ok := queue.SortedDescending().(*Queue[int])
+		require.True(t, ok, "type assertion failed")
 		expectedItems := make([]int, len(tempItems))
 		copy(expectedItems, tempItems)
 		sort.Ints(expectedItems)

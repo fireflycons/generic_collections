@@ -2,6 +2,15 @@ GO=go
 GOCOVER=$(GO) tool cover
 GOTEST=$(GO) test
 
+build:
+	go build -v ./...
+
+lint:
+	golangci-lint run
+
+test:
+	go test -v -cover -timeout=120s ./...
+
 .PHONY: test/cover
 test/cover:
 	$(GOTEST) -v -coverprofile=coverage.out ./...

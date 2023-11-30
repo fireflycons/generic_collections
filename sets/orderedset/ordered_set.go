@@ -616,18 +616,18 @@ func (s *OrderedSet[T]) rotateRight(n *node[T]) {
 	n.Parent = leftNode
 }
 
-func (s *OrderedSet[T]) replaceNode(old *node[T], new *node[T]) {
-	if old.Parent == nil {
-		s.root = new
+func (s *OrderedSet[T]) replaceNode(oldNode *node[T], newNode *node[T]) {
+	if oldNode.Parent == nil {
+		s.root = newNode
 	} else {
-		if old == old.Parent.left {
-			old.Parent.left = new
+		if oldNode == oldNode.Parent.left {
+			oldNode.Parent.left = newNode
 		} else {
-			old.Parent.right = new
+			oldNode.Parent.right = newNode
 		}
 	}
-	if new != nil {
-		new.Parent = old.Parent
+	if newNode != nil {
+		newNode.Parent = oldNode.Parent
 	}
 }
 

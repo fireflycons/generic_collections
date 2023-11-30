@@ -10,7 +10,7 @@ import (
 
 type direction int
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Iterable[int] = (*Queue[int])(nil)
 
 const (

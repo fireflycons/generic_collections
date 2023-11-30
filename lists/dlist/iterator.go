@@ -14,7 +14,7 @@ const (
 	forward, reverse direction = true, false
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Iterable[int] = (*DList[int])(nil)
 var _ collections.ReverseIterable[int] = (*DList[int])(nil)
 

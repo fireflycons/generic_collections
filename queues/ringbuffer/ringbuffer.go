@@ -165,7 +165,7 @@ func (buf *RingBuffer[T]) AddRange(values []T) {
 
 // Contains returns true if the given value is in the queue; else false
 //
-// Up to O(n)
+// Up to O(n).
 func (buf *RingBuffer[T]) Contains(value T) bool {
 
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
@@ -369,7 +369,7 @@ func (buf *RingBuffer[T]) Count() int {
 	return buf.size
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (buf *RingBuffer[T]) IsEmpty() bool {
 	return buf.size == 0
 }
@@ -392,7 +392,7 @@ func (buf *RingBuffer[T]) Clear() {
 
 // ToSlice returns a copy of the buffer content as a slice
 //
-// O(n)
+// O(n).
 func (buf *RingBuffer[T]) ToSlice() []T {
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
 
@@ -406,7 +406,7 @@ func (buf *RingBuffer[T]) ToSlice() []T {
 
 // ToSlice returns a copy of the buffer content as a slice
 //
-// O(n)
+// O(n).
 func (buf *RingBuffer[T]) ToSliceDeep() []T {
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
 
@@ -418,7 +418,7 @@ func (buf *RingBuffer[T]) ToSliceDeep() []T {
 	return buf.toSlice(false, true)
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (buf *RingBuffer[T]) String() string {
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
 
@@ -436,7 +436,7 @@ func (buf *RingBuffer[T]) String() string {
 	return str
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*RingBuffer[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_RINGBUFFER
 }

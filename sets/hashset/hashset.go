@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/sets"
 )
 
-// Assert HashSet implements required interfaces
+// Assert HashSet implements required interfaces.
 var _ sets.Set[int] = (*HashSet[int])(nil)
 
 // Capacity of initial hash buckets.
@@ -25,7 +25,7 @@ var _ sets.Set[int] = (*HashSet[int])(nil)
 // Ideally 99.9999% of values should generate unique hash keys.
 const defaultBucketCapacity = 2
 
-// Option function signature for HashSet contructor options
+// Option function signature for HashSet contructor options.
 type HashSetOptionFunc[T any] func(*HashSet[T])
 
 // HashSet stores an unordered collection of unique elements.
@@ -44,7 +44,7 @@ type HashSet[T any] struct {
 	local.InternalImpl
 }
 
-// Constructs a new HashSet[T]
+// Constructs a new HashSet[T].
 func New[T any](options ...HashSetOptionFunc[T]) *HashSet[T] {
 	s := &HashSet[T]{}
 
@@ -84,7 +84,7 @@ func WithThreadSafe[T any]() HashSetOptionFunc[T] {
 	}
 }
 
-// Option function to enable concurrency feature
+// Option function to enable concurrency feature.
 func WithConcurrent[T any]() HashSetOptionFunc[T] {
 	return func(s *HashSet[T]) {
 		s.concurrent = true
@@ -157,7 +157,7 @@ func (s *HashSet[T]) AddCollection(collection collections.Collection[T]) {
 	s.AddRange(collection.ToSliceDeep())
 }
 
-// Clear removes all values from the set, restoring it to its initial capacity
+// Clear removes all values from the set, restoring it to its initial capacity.
 func (s *HashSet[T]) Clear() {
 
 	if s.lock != nil {
@@ -225,7 +225,7 @@ func (s *HashSet[T]) UnlockedContains(value T) bool {
 	return s.contains(s.hasher(value), value) >= 0
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (s *HashSet[T]) IsEmpty() bool {
 	return s.size == 0
 }
@@ -255,7 +255,7 @@ func (s *HashSet[T]) ToSliceDeep() []T {
 // Remove removes a value from the set.
 //
 // Returns true if the value was present and was removed;
-// else false
+// else false.
 func (s *HashSet[T]) Remove(value T) bool {
 
 	if s.lock != nil {
@@ -285,7 +285,7 @@ func (s *HashSet[T]) Remove(value T) bool {
 	return true
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*HashSet[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_HASHSET
 }
@@ -422,7 +422,7 @@ func (s *HashSet[T]) Union(other sets.Set[T]) sets.Set[T] {
 	return result
 }
 
-// returns hasbucket index of value if found
+// returns hasbucket index of value if found.
 func (s *HashSet[T]) contains(hash uintptr, value T) int {
 	bucket, ok := s.buffer[hash]
 
@@ -439,7 +439,7 @@ func (s *HashSet[T]) contains(hash uintptr, value T) int {
 	return -1
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (s *HashSet[T]) String() string {
 
 	if s.lock != nil {

@@ -10,7 +10,7 @@ import (
 	"golang.org/x/exp/maps"
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Iterable[int] = (*HashSet[int])(nil)
 
 // HashSetIterator implements an iterator over the elements in the set.
@@ -72,7 +72,7 @@ func (s *HashSet[T]) TakeWhile(predicate functions.PredicateFunc[T]) collections
 // Start begins iteration across the set returning the fisrt element,
 // which will be nil if the set is empty.
 //
-// Panics if the underlying set is modified between iteration creation and call to Start()
+// Panics if the underlying set is modified between iteration creation and call to Start(),.
 func (i *HashSetIterator[T]) Start() collections.Element[T] {
 	i.validateIterator()
 	i.position = 0

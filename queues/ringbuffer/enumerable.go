@@ -7,7 +7,7 @@ import (
 	"github.com/fireflycons/generic_collections/internal/util"
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Enumerable[int] = (*RingBuffer[int])(nil)
 
 // Any returns true for the first element found where the predicate function returns true.
@@ -46,7 +46,7 @@ func (buf *RingBuffer[T]) All(predicate functions.PredicateFunc[T]) bool {
 	return true
 }
 
-// ForEach applies function f to all elements in the collection
+// ForEach applies function f to all elements in the collection.
 func (buf *RingBuffer[T]) ForEach(f func(collections.Element[T])) {
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
 
@@ -63,7 +63,7 @@ func (buf *RingBuffer[T]) ForEach(f func(collections.Element[T])) {
 }
 
 // Map applies function f to all elements in the collection
-// and returns a new RingBuffer containing the result of f
+// and returns a new RingBuffer containing the result of f.
 func (buf *RingBuffer[T]) Map(f func(T) T) collections.Collection[T] {
 	// util.ValidatePointerNotNil(unsafe.Pointer(buf))
 
@@ -147,7 +147,7 @@ func (buf *RingBuffer[T]) FindAll(predicate functions.PredicateFunc[T]) []collec
 	return result
 }
 
-// Min returns the minimum value in the collection according to the Comparer function
+// Min returns the minimum value in the collection according to the Comparer function.
 func (buf *RingBuffer[T]) Min() T {
 
 	if buf.lock != nil {
@@ -174,7 +174,7 @@ func (buf *RingBuffer[T]) Min() T {
 	return m
 }
 
-// Max returns the maximum value in the collection according to the Comparer function
+// Max returns the maximum value in the collection according to the Comparer function.
 func (buf *RingBuffer[T]) Max() T {
 
 	if buf.lock != nil {

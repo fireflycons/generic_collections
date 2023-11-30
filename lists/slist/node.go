@@ -1,13 +1,13 @@
 package slist
 
-// SListNode represents a node in an SList
+// SListNode represents a node in an SList.
 type SListNode[T any] struct {
 	next *SListNode[T]
 	list *SList[T]
 	item T
 }
 
-// NewNode initializes a new node with given value
+// NewNode initializes a new node with given value.
 func NewNode[T any](value T) *SListNode[T] {
 	return &SListNode[T]{
 		item: value,
@@ -38,12 +38,12 @@ func (n *SListNode[T]) Value() T {
 	return n.item
 }
 
-// SetValue sets the value of this node
+// SetValue sets the value of this node.
 func (n *SListNode[T]) SetValue(value T) {
 	n.item = value
 }
 
-// ValuePtr returns a pointer to this node's value
+// ValuePtr returns a pointer to this node's value.
 func (n *SListNode[T]) ValuePtr() *T {
 	return &n.item
 }

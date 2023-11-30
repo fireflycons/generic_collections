@@ -7,7 +7,7 @@ import (
 	"github.com/fireflycons/generic_collections/internal/util"
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Enumerable[int] = (*SList[int])(nil)
 
 // Any returns true for the first element found where the predicate function returns true.
@@ -44,7 +44,7 @@ func (l *SList[T]) All(predicate functions.PredicateFunc[T]) bool {
 	return true
 }
 
-// ForEach applies function f to all elements in the collection
+// ForEach applies function f to all elements in the collection.
 func (l *SList[T]) ForEach(f func(collections.Element[T])) {
 
 	if l.lock != nil {
@@ -60,7 +60,7 @@ func (l *SList[T]) ForEach(f func(collections.Element[T])) {
 }
 
 // Map applies function f to all elements in the collection
-// and returns a new SList containing the result of f
+// and returns a new SList containing the result of f.
 func (l *SList[T]) Map(f func(T) T) collections.Collection[T] {
 
 	if l.lock != nil {
@@ -79,7 +79,7 @@ func (l *SList[T]) Map(f func(T) T) collections.Collection[T] {
 	return ll1
 }
 
-// Select returns a new SList containing only the items for which predicate is true
+// Select returns a new SList containing only the items for which predicate is true.
 func (l *SList[T]) Select(predicate functions.PredicateFunc[T]) collections.Collection[T] {
 
 	if l.lock != nil {
@@ -162,7 +162,7 @@ func (l *SList[T]) FindAll(predicate functions.PredicateFunc[T]) []collections.E
 	return result
 }
 
-// Min returns the minimum value in the collection according to the Comparer function
+// Min returns the minimum value in the collection according to the Comparer function.
 func (l *SList[T]) Min() T {
 
 	if l.lock != nil {
@@ -185,7 +185,7 @@ func (l *SList[T]) Min() T {
 	return m
 }
 
-// Max returns the maximum value in the collection according to the Comparer function
+// Max returns the maximum value in the collection according to the Comparer function.
 func (l *SList[T]) Max() T {
 
 	if l.lock != nil {

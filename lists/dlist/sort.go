@@ -10,7 +10,7 @@ import (
 // I benchmarked qsort vs merge sort and merge sort was 100x faster
 // over 16K elements.
 
-// Sort performs an in-place sort of this collection with a time complexity of O(n*log n)
+// Sort performs an in-place sort of this collection with a time complexity of O(n*log n).
 func (l *DList[T]) Sort() {
 
 	if l.head == nil || l.count < 2 {
@@ -52,7 +52,7 @@ func (l *DList[T]) Sorted() collections.Collection[T] {
 	}
 }
 
-// SortDescending performs an in-place sort of this collection with a time complexity of O(n*log n)
+// SortDescending performs an in-place sort of this collection with a time complexity of O(n*log n).
 func (l *DList[T]) SortDescending() {
 
 	if l.head == nil || l.count < 2 {

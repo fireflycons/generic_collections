@@ -163,7 +163,7 @@ var xxCompareString = func(v1, v2 string) int {
 }
 
 // Compare for unsigned and string types that
-// can't be done with a simple subtraction
+// can't be done with a simple subtraction.
 func xxCompare[T ordered](v1, v2 T) int {
 	if v1 == v2 {
 		return 0
@@ -181,7 +181,7 @@ func xxCompareSignedInt[T constraints.Signed](v1, v2 T) int {
 }
 
 // Compare for float types that handle NaN as per the
-// Go 1.21 cmp package
+// Go 1.21 cmp package.
 func xxCompareFloat[T constraints.Float](v1, v2 T) int {
 	v1Nan := isNaN(v1)
 	v2Nan := isNaN(v2)

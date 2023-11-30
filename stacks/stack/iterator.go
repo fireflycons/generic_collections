@@ -93,7 +93,7 @@ func (s *Stack[T]) TakeWhile(predicate functions.PredicateFunc[T]) collections.I
 // Start begins iteration across the stack returning the fisrt element,
 // which will be nil if the stack is empty.
 //
-// Panics if the underlying stack is modified between iteration creation and call to Start()
+// Panics if the underlying stack is modified between iteration creation and call to Start().
 func (i *StackIterator[T]) Start() collections.Element[T] {
 	i.validateIterator()
 

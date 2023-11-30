@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/queues"
 )
 
-// Assert Queue implements required interfaces
+// Assert Queue implements required interfaces.
 var _ queues.Queue[int] = (*Queue[int])(nil)
 var _ collections.ReverseIterable[int] = (*Queue[int])(nil)
 
@@ -77,7 +77,7 @@ func WithThreadSafe[T any]() QueueOptionFunc[T] {
 	}
 }
 
-// Option function to enable concurrency feature
+// Option function to enable concurrency feature.
 func WithConcurrent[T any]() QueueOptionFunc[T] {
 	return func(q *Queue[T]) {
 		q.concurrent = true
@@ -131,7 +131,7 @@ func (q *Queue[T]) AddCollection(collection collections.Collection[T]) {
 	q.AddRange(collection.ToSliceDeep())
 }
 
-// AddRange enqueues the values in the given slice
+// AddRange enqueues the values in the given slice.
 func (q *Queue[T]) AddRange(values []T) {
 
 	if len(values) == 0 {
@@ -184,7 +184,7 @@ func (q *Queue[T]) Clear() {
 	q.size = 0
 }
 
-// Contains returns true if the given value is in the queue; else false
+// Contains returns true if the given value is in the queue; else false.
 func (q *Queue[T]) Contains(value T) bool {
 
 	if q.lock != nil {
@@ -195,12 +195,12 @@ func (q *Queue[T]) Contains(value T) bool {
 	return q.find(value) != -1
 }
 
-// Count returns the number of elements in the queue
+// Count returns the number of elements in the queue.
 func (q *Queue[T]) Count() int {
 	return q.size
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (q *Queue[T]) IsEmpty() bool {
 	return q.size == 0
 }
@@ -345,7 +345,7 @@ func (q *Queue[T]) Remove(value T) bool {
 	return true
 }
 
-// ToSlice returns a copy of the queue content as a slice
+// ToSlice returns a copy of the queue content as a slice.
 func (q *Queue[T]) ToSlice() []T {
 
 	if q.lock != nil {
@@ -372,12 +372,12 @@ func (q *Queue[T]) toSlice(deepCopy bool) []T {
 	return slc
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*Queue[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_QUEUE
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (q *Queue[T]) String() string {
 
 	if q.lock != nil {

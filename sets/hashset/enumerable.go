@@ -7,7 +7,7 @@ import (
 	"github.com/fireflycons/generic_collections/internal/util"
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Enumerable[int] = (*HashSet[int])(nil)
 
 // Any returns true for the first element found where the predicate function returns true.
@@ -44,7 +44,7 @@ func (s *HashSet[T]) All(predicate functions.PredicateFunc[T]) bool {
 	return true
 }
 
-// ForEach applies function f to all elements in the collection
+// ForEach applies function f to all elements in the collection.
 func (s *HashSet[T]) ForEach(f func(collections.Element[T])) {
 
 	if s.lock != nil {
@@ -60,7 +60,7 @@ func (s *HashSet[T]) ForEach(f func(collections.Element[T])) {
 }
 
 // Map applies function f to all elements in the collection
-// and returns a new HashSet containing the result of f
+// and returns a new HashSet containing the result of f.
 func (s *HashSet[T]) Map(f func(T) T) collections.Collection[T] {
 
 	if s.lock != nil {
@@ -79,7 +79,7 @@ func (s *HashSet[T]) Map(f func(T) T) collections.Collection[T] {
 	return s1
 }
 
-// Select returns a new HashSet containing only the items for which predicate is true
+// Select returns a new HashSet containing only the items for which predicate is true.
 func (s *HashSet[T]) Select(predicate functions.PredicateFunc[T]) collections.Collection[T] {
 
 	if s.lock != nil {
@@ -137,7 +137,7 @@ func (s *HashSet[T]) FindAll(predicate functions.PredicateFunc[T]) []collections
 	return result
 }
 
-// Min returns the minimum value in the collection according to the Comparer function
+// Min returns the minimum value in the collection according to the Comparer function.
 func (s *HashSet[T]) Min() T {
 
 	if s.lock != nil {
@@ -167,7 +167,7 @@ func (s *HashSet[T]) Min() T {
 	return m
 }
 
-// Max returns the maximum value in the collection according to the Comparer function
+// Max returns the maximum value in the collection according to the Comparer function.
 func (s *HashSet[T]) Max() T {
 
 	if s.lock != nil {

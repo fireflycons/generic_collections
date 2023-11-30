@@ -8,7 +8,7 @@ const (
 	forward, reverse direction = true, false
 )
 
-// Sort performs an in-place sort of this collection with a time complexity of O(n*log n)
+// Sort performs an in-place sort of this collection with a time complexity of O(n*log n).
 func (l *SList[T]) Sort() {
 
 	if l.head == nil || l.count < 2 {
@@ -50,7 +50,7 @@ func (l *SList[T]) Sorted() collections.Collection[T] {
 	}
 }
 
-// SortDescending performs an in-place sort of this collection with a time complexity of O(n*log n)
+// SortDescending performs an in-place sort of this collection with a time complexity of O(n*log n).
 func (l *SList[T]) SortDescending() {
 
 	if l.head == nil || l.count < 2 {

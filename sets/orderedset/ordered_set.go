@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/stacks/stack"
 )
 
-// Assert OrderedSet implements required interfaces
+// Assert OrderedSet implements required interfaces.
 var _ sets.Set[int] = (*OrderedSet[int])(nil)
 var _ collections.ReverseIterable[int] = (*OrderedSet[int])(nil)
 
@@ -44,7 +44,7 @@ type OrderedSet[T any] struct {
 	local.InternalImpl
 }
 
-// node is a single element within the tree
+// node is a single element within the tree.
 type node[T any] struct {
 	item   T
 	color  color
@@ -60,7 +60,7 @@ func newNode[T any](value T) *node[T] {
 	}
 }
 
-// Constructs a new OrderedSet[T]
+// Constructs a new OrderedSet[T].
 func New[T any](options ...OrderedSetOptionFunc[T]) *OrderedSet[T] {
 	set := &OrderedSet[T]{}
 
@@ -86,7 +86,7 @@ func WithThreadSafe[T any]() OrderedSetOptionFunc[T] {
 	}
 }
 
-// Option function to enable concurrency feature
+// Option function to enable concurrency feature.
 func WithConcurrent[T any]() OrderedSetOptionFunc[T] {
 	return func(s *OrderedSet[T]) {
 		s.concurrent = true
@@ -169,7 +169,7 @@ func (s *OrderedSet[T]) UnlockedContains(value T) bool {
 // Remove removes a value from the set.
 //
 // Returns true if the value was present and was removed;
-// else false
+// else false.
 func (s *OrderedSet[T]) Remove(key T) bool {
 
 	if s.lock != nil {
@@ -208,19 +208,19 @@ func (s *OrderedSet[T]) Remove(key T) bool {
 	return true
 }
 
-// Empty returns true if tree does not contain any nodes
+// Empty returns true if tree does not contain any nodes.
 func (s *OrderedSet[T]) Empty() bool {
 
 	return s.size == 0
 }
 
-// Count returns the number of values stored in the collection
+// Count returns the number of values stored in the collection.
 func (s *OrderedSet[T]) Count() int {
 
 	return s.size
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (s *OrderedSet[T]) IsEmpty() bool {
 	return s.size == 0
 }
@@ -267,7 +267,7 @@ func (s *OrderedSet[T]) Clear() {
 	s.version++
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (s *OrderedSet[T]) String() string {
 	str := "OrderedSet\n"
 	if !s.Empty() {

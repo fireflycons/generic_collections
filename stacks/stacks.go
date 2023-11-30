@@ -10,7 +10,7 @@ import (
 
 // Stack is the abstract interface for collections that operate as LIFO queues.
 //
-// Implemented by Stack[T]
+// Implemented by Stack[T].
 type Stack[T any] interface {
 	// Stack implements Collection
 	collections.Collection[T]

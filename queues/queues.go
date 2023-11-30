@@ -10,7 +10,7 @@ import (
 
 // Queue is the abstract interface for collections that operate as FIFO queues.
 //
-// Implemented by Queue[T], RingBuffer[T]
+// Implemented by Queue[T], RingBuffer[T].
 type Queue[T any] interface {
 	// Queue implements Collection
 	collections.Collection[T]

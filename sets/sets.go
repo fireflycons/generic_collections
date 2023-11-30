@@ -11,7 +11,7 @@ import (
 
 // Set is the abstract interface for collections of unique elements.
 //
-// Implemented by HashSet[T], OrderedSet[T]
+// Implemented by HashSet[T], OrderedSet[T].
 type Set[T any] interface {
 	// Set implements Collection
 	collections.Collection[T]

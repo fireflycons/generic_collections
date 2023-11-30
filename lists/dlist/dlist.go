@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/lists"
 )
 
-// Assert DList implements required interfaces
+// Assert DList implements required interfaces.
 var _ lists.List[int] = (*DList[int])(nil)
 var _ collections.ReverseIterable[int] = (*DList[int])(nil)
 
@@ -118,7 +118,7 @@ func (l *DList[T]) AddItemLast(value T) {
 
 // Add adds a value to the end of the list.
 //
-// Always returns true
+// Always returns true.
 func (l *DList[T]) Add(value T) bool {
 
 	l.AddItemLast(value)
@@ -131,7 +131,7 @@ func (l *DList[T]) Count() int {
 	return l.count
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (l *DList[T]) IsEmpty() bool {
 	return l.count == 0
 }
@@ -327,7 +327,7 @@ func (l *DList[T]) AddNodeLast(node *DListNode[T]) {
 	l.version++
 }
 
-// Clear empties the list, detaching and invalidating all nodes
+// Clear empties the list, detaching and invalidating all nodes.
 func (l *DList[T]) Clear() {
 
 	if l.count == 0 {
@@ -374,7 +374,7 @@ func (l *DList[T]) Contains(value T) bool {
 	return false
 }
 
-// Remove is an alias for [linkedlist.RemoveItem]
+// Remove is an alias for [linkedlist.RemoveItem].
 func (l *DList[T]) Remove(value T) bool {
 
 	return l.RemoveItem(value)
@@ -532,12 +532,12 @@ func (l *DList[T]) toSlice(deepCopy bool) []T {
 	return slc
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*DList[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_DLIST
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (l *DList[T]) String() string {
 
 	if l.lock != nil {
@@ -651,7 +651,7 @@ func (ll *DList[T]) removeNode(node *DListNode[T]) {
 	ll.version++
 }
 
-// Make a new empty list with the same attributes as this
+// Make a new empty list with the same attributes as this.
 func (ll *DList[T]) makeCopy() *DList[T] {
 	ll1 := &DList[T]{
 		copy:    ll.copy,

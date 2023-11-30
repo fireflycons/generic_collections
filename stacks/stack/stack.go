@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/stacks"
 )
 
-// Assert Stack implements required interfaces
+// Assert Stack implements required interfaces.
 var _ stacks.Stack[int] = (*Stack[int])(nil)
 var _ collections.ReverseIterable[int] = (*Stack[int])(nil)
 
@@ -41,7 +41,7 @@ type Stack[T any] struct {
 	local.InternalImpl
 }
 
-// New creates a new stack with initial capacity for 16 elements
+// New creates a new stack with initial capacity for 16 elements.
 func New[T any](options ...StackOptionFunc[T]) *Stack[T] {
 	stack := &Stack[T]{
 		initialCapacity: util.DefaultCapacity,
@@ -70,7 +70,7 @@ func WithThreadSafe[T any]() StackOptionFunc[T] {
 	}
 }
 
-// Option function to enable concurrency feature
+// Option function to enable concurrency feature.
 func WithConcurrent[T any]() StackOptionFunc[T] {
 	return func(s *Stack[T]) {
 		s.concurrent = true
@@ -173,7 +173,7 @@ func (s *Stack[T]) Count() int {
 	return s.size
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (s *Stack[T]) IsEmpty() bool {
 	return s.size == 0
 }
@@ -230,7 +230,7 @@ func (s *Stack[T]) Clear() {
 
 // Peek returns the value at the top of the stack without adjusting the stack.
 //
-// Panics if the stack is empty
+// Panics if the stack is empty.
 func (s *Stack[T]) Peek() T {
 
 	if s.lock != nil {
@@ -344,7 +344,7 @@ func (s *Stack[T]) Remove(value T) bool {
 	return true
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (s *Stack[T]) String() string {
 
 	if s.lock != nil {
@@ -359,7 +359,7 @@ func (s *Stack[T]) String() string {
 	return "Queue\n" + strings.Join(values, ", ")
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*Stack[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_STACK
 }

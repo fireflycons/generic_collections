@@ -16,7 +16,7 @@ import (
 	"github.com/fireflycons/generic_collections/lists"
 )
 
-// Assert SList implements required interfaces
+// Assert SList implements required interfaces.
 var _ lists.List[int] = (*SList[int])(nil)
 
 // SListOptionFunc is the signature of a function
@@ -116,7 +116,7 @@ func (l *SList[T]) AddItemLast(value T) {
 
 // Add adds a value to the end of the list.
 //
-// Always returns true
+// Always returns true.
 func (l *SList[T]) Add(value T) bool {
 
 	l.AddItemLast(value)
@@ -129,7 +129,7 @@ func (l *SList[T]) Count() int {
 	return l.count
 }
 
-// IsEmpty returns true if the collection has no elements
+// IsEmpty returns true if the collection has no elements.
 func (l *SList[T]) IsEmpty() bool {
 	return l.count == 0
 }
@@ -258,7 +258,7 @@ func (l *SList[T]) AddNodeLast(node *SListNode[T]) {
 	l.version++
 }
 
-// Clear empties the list, detaching and invalidating all nodes
+// Clear empties the list, detaching and invalidating all nodes.
 func (l *SList[T]) Clear() {
 
 	if l.count == 0 {
@@ -305,7 +305,7 @@ func (l *SList[T]) Contains(value T) bool {
 	return false
 }
 
-// Remove is an alias for [SList.RemoveItem]
+// Remove is an alias for [SList.RemoveItem].
 func (l *SList[T]) Remove(value T) bool {
 
 	return l.RemoveItem(value)
@@ -463,12 +463,12 @@ func (l *SList[T]) toSlice(deepCopy bool) []T {
 	return slc
 }
 
-// Type returns the type of this collection
+// Type returns the type of this collection.
 func (*SList[T]) Type() collections.CollectionType {
 	return collections.COLLECTION_SLIST
 }
 
-// String returns a string representation of container
+// String returns a string representation of container.
 func (l *SList[T]) String() string {
 
 	if l.lock != nil {
@@ -595,7 +595,7 @@ func (l *SList[T]) addItemLast(value T) *SListNode[T] {
 	return newNode
 }
 
-// Make a new empty list with the same attributes as this
+// Make a new empty list with the same attributes as this.
 func (l *SList[T]) makeCopy() *SList[T] {
 	ll1 := &SList[T]{
 		copy:    l.copy,

@@ -1,6 +1,6 @@
 package dlist
 
-// DListNode represents a node in a DList
+// DListNode represents a node in a DList.
 type DListNode[T any] struct {
 	prev *DListNode[T]
 	next *DListNode[T]
@@ -8,7 +8,7 @@ type DListNode[T any] struct {
 	item T
 }
 
-// NewNode initializes a new node with given value
+// NewNode initializes a new node with given value.
 func NewNode[T any](value T) *DListNode[T] {
 	return &DListNode[T]{
 		item: value,
@@ -53,12 +53,12 @@ func (n *DListNode[T]) Value() T {
 	return n.item
 }
 
-// SetValue sets the value of this node
+// SetValue sets the value of this node.
 func (n *DListNode[T]) SetValue(value T) {
 	n.item = value
 }
 
-// ValuePtr returns a pointer to this node's value
+// ValuePtr returns a pointer to this node's value.
 func (n *DListNode[T]) ValuePtr() *T {
 	return &n.item
 }

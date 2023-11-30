@@ -6,7 +6,7 @@ import (
 	"github.com/fireflycons/generic_collections/internal/util"
 )
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Enumerable[int] = (*Stack[int])(nil)
 
 // Any returns true for the first element found where the predicate function returns true.
@@ -43,7 +43,7 @@ func (s *Stack[T]) All(predicate functions.PredicateFunc[T]) bool {
 	return true
 }
 
-// ForEach applies function f to all elements in the collection
+// ForEach applies function f to all elements in the collection.
 func (s *Stack[T]) ForEach(f func(collections.Element[T])) {
 
 	if s.lock != nil {
@@ -59,7 +59,7 @@ func (s *Stack[T]) ForEach(f func(collections.Element[T])) {
 }
 
 // Map applies function f to all elements in the collection
-// and returns a new Stack containing the result of f
+// and returns a new Stack containing the result of f.
 func (s *Stack[T]) Map(f func(T) T) collections.Collection[T] {
 
 	if s.lock != nil {
@@ -78,7 +78,7 @@ func (s *Stack[T]) Map(f func(T) T) collections.Collection[T] {
 	return buf1
 }
 
-// Select returns a new Stack containing only the items for which predicate is true
+// Select returns a new Stack containing only the items for which predicate is true.
 func (s *Stack[T]) Select(predicate functions.PredicateFunc[T]) collections.Collection[T] {
 
 	if s.lock != nil {
@@ -175,7 +175,7 @@ func (s *Stack[T]) doSelect(predicate functions.PredicateFunc[T], deepCopy bool)
 	return s1
 }
 
-// Min returns the minimum value in the collection according to the Comparer function
+// Min returns the minimum value in the collection according to the Comparer function.
 func (s *Stack[T]) Min() T {
 
 	if s.lock != nil {
@@ -186,7 +186,7 @@ func (s *Stack[T]) Min() T {
 	return util.Min(s.buffer[0:s.size], s.compare, s.concurrent)
 }
 
-// Max returns the maximum value in the collection according to the Comparer function
+// Max returns the maximum value in the collection according to the Comparer function.
 func (s *Stack[T]) Max() T {
 
 	if s.lock != nil {

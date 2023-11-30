@@ -6,13 +6,13 @@ import (
 	"github.com/fireflycons/generic_collections/internal/messages"
 )
 
-// Properties shared by all iterator types
+// Properties shared by all iterator types.
 type IteratorBase[T any] struct {
 	Version    int
 	NilElement collections.Element[T]
 }
 
-// Concrete representation of Element interface
+// Concrete representation of Element interface.
 type ElementType[T any] struct {
 	Collection collections.Collection[T]
 	Version    int

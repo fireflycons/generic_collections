@@ -11,7 +11,7 @@ import (
 
 type direction bool
 
-// Assert interface implementation
+// Assert interface implementation.
 var _ collections.Iterable[int] = (*OrderedSet[int])(nil)
 
 const (

@@ -10,10 +10,10 @@ import (
 	"github.com/fireflycons/generic_collections/internal/messages"
 )
 
-// Default capacity for collections (where capacity matters)
+// Default capacity for collections (where capacity matters).
 const DefaultCapacity = 16
 
-// Point (slice length) at which some slice operations switch to concurrent
+// Point (slice length) at which some slice operations switch to concurrent.
 const concurrentThreshold = 65536
 
 // Default predicate function for anywhere a predicate is required
@@ -21,14 +21,14 @@ const concurrentThreshold = 65536
 func DefaultPredicate[T any](T) bool { return true }
 
 // Reverse order of slice elements
-// As per .NET Array.Reverse(Array)
+// As per .NET Array.Reverse(Array).
 func Reverse[T any](slc []T) []T {
 
 	return ReverseSubset(slc, 0, len(slc))
 }
 
 // Reverse a subset of slice elements
-// As per .NET Array.Reverse(Array, Int32, Int32)
+// As per .NET Array.Reverse(Array, Int32, Int32).
 func ReverseSubset[T any](slc []T, start, length int) []T {
 	end := start + length - 1
 
@@ -41,7 +41,7 @@ func ReverseSubset[T any](slc []T, start, length int) []T {
 	return slc
 }
 
-// As per .NET Array.Copy(Array, Int32, Array, Int32, Int32)
+// As per .NET Array.Copy(Array, Int32, Array, Int32, Int32).
 func PartialCopy[T any](source []T, sourceIndex int, dest []T, destIndex int, length int) {
 	for i := sourceIndex; i < sourceIndex+length; i++ {
 		dest[destIndex] = source[i]
@@ -62,7 +62,7 @@ func PartialCopyDeep[T any](source []T, sourceIndex int, dest []T, destIndex int
 	}
 }
 
-// Get index in slice of given value. Return -1 if no match
+// Get index in slice of given value. Return -1 if no match.
 func IndexOf[T any](slc []T, value T, compare functions.ComparerFunc[T], concurrent bool) (index int) {
 	l := len(slc)
 	if l == 0 {
@@ -138,7 +138,7 @@ func indexOfConcurrent[T any](data []T, value T, compare functions.ComparerFunc[
 	return <-resultsChan
 }
 
-// Get last index in slice of given value. Return -1 if no match
+// Get last index in slice of given value. Return -1 if no match.
 func LastIndexOf[T any](slc []T, value T, compare functions.ComparerFunc[T], concurrent bool) (index int) {
 	l := len(slc)
 	if l == 0 {
@@ -268,7 +268,7 @@ func Max[T any](slc []T, compare functions.ComparerFunc[T], concurrent bool) T {
 	}
 }
 
-// min value of slice O(n)
+// min value of slice O(n).
 func min[T any](slc []T, compare functions.ComparerFunc[T]) T {
 	var m T
 	for i, e := range slc {
@@ -280,7 +280,7 @@ func min[T any](slc []T, compare functions.ComparerFunc[T]) T {
 	return m
 }
 
-// max value of slice O(n)
+// max value of slice O(n).
 func max[T any](slc []T, compare functions.ComparerFunc[T]) T {
 	var m T
 	for i, e := range slc {
@@ -346,7 +346,7 @@ being accessed are the size of a CPU word.
 Tests on each collection verify the action of these functions.
 */
 
-// Copy of internal representation of interface{}
+// Copy of internal representation of interface{}.
 type eface struct {
 	typ, val unsafe.Pointer
 }

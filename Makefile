@@ -2,7 +2,7 @@ GO=go
 GOCOVER=$(GO) tool cover
 GOTEST=$(GO) test
 
-build:
+build: lint
 	go build -v ./...
 
 lint:

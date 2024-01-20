@@ -189,6 +189,22 @@ func TestContains(t *testing.T) {
 	require.True(t, set.Contains(setItems[4]))
 }
 
+func TestGet(t *testing.T) {
+
+	var setItems []int
+	seed := int64(2163)
+	setItems = util.CreateSerialIntListData(util.DefaultCapacity, &seed)
+
+	var set = New[int]()
+	//set.AddRange(setItems)
+	for _, v := range setItems {
+		set.Add(v)
+	}
+	require.ElementsMatch(t, setItems, set.ToSlice())
+
+	require.Equal(t, setItems[4], set.Get(setItems[4]).Value())
+}
+
 func TestClearWithPointers(t *testing.T) {
 
 	var setItems, tempItems []int

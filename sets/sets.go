@@ -16,6 +16,10 @@ type Set[T any] interface {
 	// Set implements Collection
 	collections.Collection[T]
 
+	// Get returns the collection element that matches the given value, or nil if it is not found.
+	// Useful if the set contains struct elements you want to modify in-place.
+	Get(value T) collections.Element[T]
+
 	// Difference returns the difference between two sets.
 	//
 	// The new set consists of a shallow-copy of all elements that are in this set, but not other set.

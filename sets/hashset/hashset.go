@@ -225,6 +225,24 @@ func (s *HashSet[T]) UnlockedContains(value T) bool {
 	return s.contains(s.hasher(value), value) >= 0
 }
 
+// Get returns the collection element that matches the given value, or nil if it is not found.
+// Useful if the set contains struct elements you want to modify in-place.
+func (s *HashSet[T]) Get(value T) collections.Element[T] {
+	if s.lock != nil {
+		s.lock.RLock()
+		defer s.lock.RUnlock()
+	}
+
+	hash := s.hasher(value)
+	ind := s.contains(hash, value)
+
+	if ind == -1 {
+		return nil
+	}
+
+	return util.NewElementType[T](s, &s.buffer[hash][ind])
+}
+
 // IsEmpty returns true if the collection has no elements.
 func (s *HashSet[T]) IsEmpty() bool {
 	return s.size == 0

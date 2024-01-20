@@ -166,6 +166,24 @@ func (s *OrderedSet[T]) UnlockedContains(value T) bool {
 	return s.lookup(value) != nil
 }
 
+// Get returns the collection element that matches the given value, or nil if it is not found.
+// Useful if the set contains struct elements you want to modify in-place.
+func (s *OrderedSet[T]) Get(value T) collections.Element[T] {
+
+	if s.lock != nil {
+		s.lock.RLock()
+		defer s.lock.RUnlock()
+	}
+
+	n := s.lookup(value)
+
+	if n == nil {
+		return nil
+	}
+
+	return util.NewElementType[T](s, &n.item)
+}
+
 // Remove removes a value from the set.
 //
 // Returns true if the value was present and was removed;
